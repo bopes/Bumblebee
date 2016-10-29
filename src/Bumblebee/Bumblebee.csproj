@@ -108,6 +108,7 @@
     <Compile Include="Setup\Settings.cs" />
     <Compile Include="Setup\ThreadedSession.cs" />
     <Compile Include="Setup\DriverEnvironments\BrowserStackDriverEnvironment.cs" />
+    <Compile Include="Setup\DriverEnvironments\BrowserStack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -125,7 +126,6 @@
   <ItemGroup>
     <None Include="Bumblebee.nuspec" />
     <None Include="packages.config" />
-    <None Include="Setup\DriverEnvironments\BrowserStack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
