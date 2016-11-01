@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -7,6 +8,7 @@ namespace Bumblebee.Setup.DriverEnvironments
 {
   public abstract class BrowserStackDriverEnvironment : IDriverEnvironment
   {
+	public string browser = "Firefox";
     private TimeSpan TimeToWait { get; set; }
 
     public BrowserStackDriverEnvironment() : this(TimeSpan.FromSeconds(5))
@@ -15,28 +17,38 @@ namespace Bumblebee.Setup.DriverEnvironments
 
     public BrowserStackDriverEnvironment(TimeSpan timeToWait)
     {
-      TimeToWait = timeToWait;
+		TimeToWait = timeToWait;
     }
 
     public virtual IWebDriver CreateWebDriver()
     {
-      RemoteWebDriver driver;
+		RemoteWebDriver driver;
 
-      DesiredCapabilities capability = DesiredCapabilities.Firefox();
+		DesiredCapabilities capability = new DesiredCapabilities(
+			this.browser, 
+			"", 
+			new Platform(PlatformType.Any)
+		);
 
-      capability.SetCapability("browserstack.user", "funemployed1");
+			//DesiredCapabilities capability = DesiredCapabilities.Firefox();
 
-      capability.SetCapability("browserstack.key", "k9LM791ZtS68HRmygG4i");
+		var BrowserStackUser = ConfigurationManager.AppSettings["browserstackuser"];
 
-      driver = new RemoteWebDriver(
-        new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability
-      );
+		var BrowserStackKey = ConfigurationManager.AppSettings["browserstackkey"];
 
-      driver.Manage().Window.Maximize();
+		capability.SetCapability("browserstack.user", BrowserStackUser);
 
-      driver.Manage().Timeouts().ImplicitlyWait(TimeToWait);
+		capability.SetCapability("browserstack.key",  BrowserStackKey);
 
-      return driver;
+		driver = new RemoteWebDriver(
+			new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capability
+		);
+
+		driver.Manage().Window.Maximize();
+
+		driver.Manage().Timeouts().ImplicitlyWait(TimeToWait);
+
+		return driver;
     }
   }
 }

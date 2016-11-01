@@ -28,7 +28,7 @@ namespace Bumblebee.IntegrationTests.Setup
 		{
 			var environment = new TDriverEnvironment();
 
-			using (var driver = environment.CreateWebDriver())
+			using (var driver = BrowserStackDriverEnvironment.CreateWebDriver(environment))
 			{
 				driver.Should().BeOfType<TExpectedDriver>();
 			}
@@ -63,7 +63,7 @@ namespace Bumblebee.IntegrationTests.Setup
 			}
 
 			var environment = constructor.Invoke(constructorArgs.ToArray()) as IDriverEnvironment;
-			using (environment.CreateWebDriver())
+			using (BrowserStackDriverEnvironment.CreateWebDriver(environment))
 			{
 			}
 		}

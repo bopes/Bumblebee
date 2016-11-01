@@ -133,7 +133,7 @@ namespace Bumblebee.IntegrationTests.Extensions
 				Text = "Not the right text"
 			};
 
-			driverEnvironment.CreateWebDriver().Returns(driver);
+			BrowserStackDriverEnvironment.CreateWebDriver(driverEnvironment).Returns(driver);
 
 			settings.CaptureScreenOnVerificationFailure.Returns(true);
 
@@ -160,7 +160,7 @@ namespace Bumblebee.IntegrationTests.Extensions
 			var settings = Substitute.For<ISettings>();
 			var session = Substitute.For<Session>(driverEnvironment);
 
-			driverEnvironment.CreateWebDriver().Returns(driver);
+			BrowserStackDriverEnvironment.CreateWebDriver(driverEnvironment).Returns(driver);
 
 			settings.CaptureScreenOnVerificationFailure.Returns(true);
 
@@ -187,7 +187,7 @@ namespace Bumblebee.IntegrationTests.Extensions
 			var settings = Substitute.For<ISettings>();
 			var session = Substitute.For<Session>(driverEnvironment);
 
-			driverEnvironment.CreateWebDriver().Returns(driver);
+			BrowserStackDriverEnvironment.CreateWebDriver(driverEnvironment).Returns(driver);
 
 			settings.CaptureScreenOnVerificationFailure.Returns(false);
 
@@ -222,7 +222,7 @@ namespace Bumblebee.IntegrationTests.Extensions
 			var settings = Substitute.For<ISettings>();
 			var session = Substitute.For<Session>(driverEnvironment);
 
-			driverEnvironment.CreateWebDriver().Returns(driver);
+			BrowserStackDriverEnvironment.CreateWebDriver(driverEnvironment).Returns(driver);
 
 			settings.CaptureScreenOnVerificationFailure.Returns(false);
 

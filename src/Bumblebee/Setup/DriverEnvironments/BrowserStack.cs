@@ -1,5 +1,7 @@
 using System;
 
+using OpenQA.Selenium.Remote;
+
 namespace Bumblebee.Setup.DriverEnvironments
 {
   public class BrowserStack : BrowserStackDriverEnvironment
@@ -11,5 +13,10 @@ namespace Bumblebee.Setup.DriverEnvironments
     public BrowserStack(TimeSpan timeToWait) : base(timeToWait)
     {
     }
+
+	public BrowserStack(string browser)
+	{
+		this.browser = browser;
+	}
   }
 }

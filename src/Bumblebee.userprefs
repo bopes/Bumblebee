@@ -1,9 +1,8 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{690961A6-7130-4AFB-AE14-51D18DC6B223}|Unit Tests">
   <MonoDevelop.Ide.Workbench ActiveDocument="Bumblebee/Setup/DriverEnvironments/BrowserStackDriverEnvironment.cs">
     <Files>
-      <File FileName="Bumblebee/Setup/DriverEnvironments/BrowserStack.cs" Line="15" Column="2" />
-      <File FileName="Bumblebee Status" />
-      <File FileName="Bumblebee/Setup/DriverEnvironments/BrowserStackDriverEnvironment.cs" Line="6" Column="41" NotebookId="1" />
+      <File FileName="Bumblebee/Setup/DriverEnvironments/BrowserStack.cs" Line="17" Column="37" />
+      <File FileName="Bumblebee/Setup/DriverEnvironments/BrowserStackDriverEnvironment.cs" Line="34" Column="69" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -11,4 +10,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Bumblebee PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
