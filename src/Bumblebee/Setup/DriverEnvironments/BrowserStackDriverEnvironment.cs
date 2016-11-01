@@ -9,7 +9,7 @@ namespace Bumblebee.Setup.DriverEnvironments
   public abstract class BrowserStackDriverEnvironment : IDriverEnvironment
   {
 	public string Browser { get; set; }
-    private TimeSpan TimeToWait { get; set; }
+    	private TimeSpan TimeToWait { get; set; }
 
 	public BrowserStackDriverEnvironment(string browser, TimeSpan timeToWait)
 	{
@@ -17,20 +17,20 @@ namespace Bumblebee.Setup.DriverEnvironments
 		TimeToWait = timeToWait;
 	}
 
-    public BrowserStackDriverEnvironment() : this("Firefox", TimeSpan.FromSeconds(5))
-    {
-    }
+    	public BrowserStackDriverEnvironment() : this("Firefox", TimeSpan.FromSeconds(5))
+    	{
+    	}
 
 	public BrowserStackDriverEnvironment(string browser) : this(browser, TimeSpan.FromSeconds(5))
 	{
 	}
 
-    public BrowserStackDriverEnvironment(TimeSpan timeToWait) : this("Firefox", timeToWait)
-    {
-    }
+    	public BrowserStackDriverEnvironment(TimeSpan timeToWait) : this("Firefox", timeToWait)
+    	{
+    	}
 
-    public virtual IWebDriver CreateWebDriver()
-    {
+    	public virtual IWebDriver CreateWebDriver()
+    	{
 		RemoteWebDriver driver;
 
 		DesiredCapabilities capability = new DesiredCapabilities(
@@ -56,6 +56,6 @@ namespace Bumblebee.Setup.DriverEnvironments
 		driver.Manage().Timeouts().ImplicitlyWait(TimeToWait);
 
 		return driver;
-    }
+    	}
   }
 }
