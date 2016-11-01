@@ -8,22 +8,26 @@ namespace Bumblebee.Setup.DriverEnvironments
 {
   public abstract class BrowserStackDriverEnvironment : IDriverEnvironment
   {
-	public string Browser = "Firefox";
+	public string Browser { get; set; }
     private TimeSpan TimeToWait { get; set; }
 
-    public BrowserStackDriverEnvironment() : this(TimeSpan.FromSeconds(5))
-    {
-    }
-
-    public BrowserStackDriverEnvironment(TimeSpan timeToWait)
-    {
-		TimeToWait = timeToWait;
-    }
-
-	public BrowserStackDriverEnvironment(string browser)
+	public BrowserStackDriverEnvironment(string browser, TimeSpan timeToWait)
 	{
 		Browser = browser;
+		TimeToWait = timeToWait;
 	}
+
+    public BrowserStackDriverEnvironment() : this("Firefox", TimeSpan.FromSeconds(5))
+    {
+    }
+
+	public BrowserStackDriverEnvironment(string browser) : this(browser, TimeSpan.FromSeconds(5))
+	{
+	}
+
+    public BrowserStackDriverEnvironment(TimeSpan timeToWait) : this("Firefox", timeToWait)
+    {
+    }
 
     public virtual IWebDriver CreateWebDriver()
     {
@@ -34,8 +38,6 @@ namespace Bumblebee.Setup.DriverEnvironments
 			"", 
 			new Platform(PlatformType.Any)
 		);
-
-			//DesiredCapabilities capability = DesiredCapabilities.Firefox();
 
 		var BrowserStackUser = ConfigurationManager.AppSettings["browserstackuser"];
 
