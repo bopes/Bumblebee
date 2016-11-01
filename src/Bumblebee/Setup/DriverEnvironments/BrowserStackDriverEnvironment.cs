@@ -8,7 +8,7 @@ namespace Bumblebee.Setup.DriverEnvironments
 {
   public abstract class BrowserStackDriverEnvironment : IDriverEnvironment
   {
-	public string browser = "Firefox";
+	public string Browser = "Firefox";
     private TimeSpan TimeToWait { get; set; }
 
     public BrowserStackDriverEnvironment() : this(TimeSpan.FromSeconds(5))
@@ -20,12 +20,17 @@ namespace Bumblebee.Setup.DriverEnvironments
 		TimeToWait = timeToWait;
     }
 
+	public BrowserStackDriverEnvironment(string browser)
+	{
+		Browser = browser;
+	}
+
     public virtual IWebDriver CreateWebDriver()
     {
 		RemoteWebDriver driver;
 
 		DesiredCapabilities capability = new DesiredCapabilities(
-			this.browser, 
+			this.Browser, 
 			"", 
 			new Platform(PlatformType.Any)
 		);

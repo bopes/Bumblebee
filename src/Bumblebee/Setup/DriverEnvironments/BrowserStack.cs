@@ -14,9 +14,8 @@ namespace Bumblebee.Setup.DriverEnvironments
     {
     }
 
-	public BrowserStack(string browser)
+	public BrowserStack(string browser) : base(browser)
 	{
-		this.browser = browser;
 	}
   }
 }
